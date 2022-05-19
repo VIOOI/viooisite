@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet, useLocation } from 'react-router-dom'
 
-function App() {
+import { Menu } from './components/menu'
+import { CodeItem } from './components/codeItem'
+
+export function App() {
+	let location = useLocation()
+	const pathReg = /\/frameworks(\/.*)?/
+	console.log( location )
+	console.log( pathReg.test(location.pathname) )
+
+	let skilsName = ''
+	switch(location.pathname){
+		case '/skils/react':
+			skilsName = 'ReactJS...'
+			break;
+		case '/skils/next':
+			skilsName = 'NextJS...'
+			break;
+		case '/skils/tailwind':
+			skilsName = 'TailwindCSS...'
+			break;
+		default: 
+			skilsName = 'Узнать подробнее...'
+			break;
+	}
+	
+	const scrollToBottom = () => {
+		const pageHiedth = document.documentElement.scrollHeight 
+		console.log( pageHiedth )
+		window.scrollTo({
+			top: parseInt(pageHiedth),
+			behavior: "smooth"
+			})
+	}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+		<> 
+			<Menu />
+			<div className="home_page">
+				<div className="home_info">
+					<CodeItem code={'<body>'} className='absolute top-16 left-32' />
+					<div className="info_content">
+						<div>
+							<CodeItem code={'<h1>'} />
+							<h1 className="text-7xl font-code font-extrabold ml-8 my-5">Белов <br /> Владимир</h1>
+							<CodeItem code={'</h1>'} />
+						</div>
+						<div className="flex gap-x-5 items-center">
+							<CodeItem code={'<h2>'} />
+							<h2 className="font-code text-2xl">FrontEnd Development</h2>
+							<CodeItem code={'</h2>'} />
+						</div>
+						<div>
+							<CodeItem code={'<button name=«button»>'} />
+							<button name="about" 
+								onClick={scrollToBottom}
+								className="bg-site-400 font-code text-site-100 px-14 py-5 rounded-xl my-5 ml-8"
+								> {skilsName} </button>
+							<CodeItem code={'</button>'} />
+						</div>
+					</div>
+					<CodeItem code={'</body>'} className='absolute bottom-16 left-32' />
+				</div>
+				<div className={"home_bcg" +
+					(pathReg.test(location.pathname) ? ' bg-site-400' : ' bg-image-home')
+				}></div>
+			</div>
+		<Outlet />
+</>
   );
 }
 
-export default App;

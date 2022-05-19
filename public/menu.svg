@@ -1,0 +1,18 @@
+<svg id="Меню" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="66" viewBox="0 0 60 66">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="60" height="66" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Меню-2" data-name="Меню" clip-path="url(#clip-path)">
+    <g transform="translate(-31 -34)">
+      <rect id="Прямоугольник_3" data-name="Прямоугольник 3" width="60" height="15" rx="3" transform="translate(31 34)" fill="#101010"/>
+    </g>
+    <g transform="translate(-31 -11)">
+      <rect id="Прямоугольник_3-2" data-name="Прямоугольник 3" width="60" height="15" rx="3" transform="translate(31 34)" fill="#101010"/>
+    </g>
+    <g transform="translate(-31 12)">
+      <rect id="Прямоугольник_3-3" data-name="Прямоугольник 3" width="60" height="15" rx="3" transform="translate(31 34)" fill="#101010"/>
+    </g>
+  </g>
+</svg>

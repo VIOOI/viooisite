@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+
+@layer components {
+	.home_page {
+		min-height: 700px;
+		@apply flex #{!important};
+
+		.home_info{
+			min-height: 700px;
+			@apply w-6/12 h-screen relative flex flex-col justify-center items-center #{!important};
+
+			.info_content{
+				@apply flex flex-col gap-y-5 #{!important};
+			}
+		}
+			.home_bcg{
+				min-height: 700px;
+				@apply w-6/12 h-screen bg-image-home bg-cover #{!important};
+			}
+
+			.home_code{
+				@apply font-code text-site-300 text-xl #{!important};
+			}
+
+		.menu{
+			@apply flex flex-col gap-y-2 fixed top-10 left-10 #{!important};
+
+			.menu_line{
+				@apply w-14 h-3 bg-site-400 rounded-sm #{!important};
+			}
+		}
+	}
+}
+
+@tailwind utilities
+

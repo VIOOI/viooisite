@@ -1,17 +1,38 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+
+import './index.sass';
+
+import { App } from './App';
+
+import { SkilsPage } from './pages/skils'
+import { ReactPage } from './pages/skils/react'
+import { NextPage } from './pages/skils/next'
+import { TailwindPage } from './pages/skils/tailwind'
+import { DecsriptionSkils } from './pages/skils/description'
+
+import { FrameworksPage } from './pages/frameworks'
+import { FrameworkDescription } from './pages/frameworks/frameworkPage'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+	<BrowserRouter >
+		<Routes>
+			<Route path='/' element={ <App /> } >
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+				<Route path='/' element={ <Navigate to={'/skils'} replace /> } />
+				<Route path='skils' element={ <SkilsPage /> } >
+					<Route path='' element={ <DecsriptionSkils /> } />
+					<Route path='react' element={ <ReactPage /> } />
+					<Route path='next' element={ <NextPage /> } />
+					<Route path='tailwind' element={ <TailwindPage /> } />
+				</Route>
+
+				<Route path='frameworks' element={ <FrameworksPage /> } >
+					<Route path=':name' element={ <FrameworkDescription /> } />
+				</Route>
+
+			</Route>
+		</Routes>
+	 </BrowserRouter>
+);
