@@ -1,7 +1,20 @@
 import { NavLink, Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
-import { Framework } from '../../components/framewor'
+import { MFramework } from '../../components/framewor'
 import { Outlet } from 'react-router-dom'
+
+const skilsAnimation = {
+	hidden: {
+		x: -100,
+		opacity: 0,
+	},
+	visible: custom => ( {
+		x: 0,
+		opacity: 1,
+		transition: { delay: custom * 0.2 },
+	} )
+}
 
 export const FrameworksPage = () => {
 	return (
@@ -10,14 +23,18 @@ export const FrameworksPage = () => {
 			<div className="frameworks_info">
 				<Outlet />
 			</div>
-			<div className="frameworks_list relative">
+			<motion.div className="frameworks_list relative"
+					initial='hidden'
+					whileInView='visible'
+					viewport={{ amount: 0.2, once: true }}
+					>
 				<ul>
-					<Framework name={'Redux-toolkit'} discription={''} link='redux-toolkit' />
-					<Framework name={'React-router'} discription={''} link='react-router' />
-					<Framework name={'Framer-motion'} discription={''} link='framer-motion' />
+					<MFramework custom={1} variants={skilsAnimation} name={'Redux-toolkit'} discription={''} link='redux-toolkit' />
+					<MFramework custom={2} variants={skilsAnimation} name={'React-router'} discription={''} link='react-router' />
+					<MFramework custom={3} variants={skilsAnimation} name={'Framer-motion'} discription={''} link='framer-motion' />
 				</ul>
 					<Link to='/skils' className='text-2xl font-code absolute bottom-5 right-5'>{`<— Назад`}</Link>
-			</div>
+			</motion.div>
 		</div>
 	</>
 	)
