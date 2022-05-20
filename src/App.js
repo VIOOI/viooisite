@@ -1,13 +1,16 @@
+import React, { useEffect, useRef, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 
 import { Menu } from './components/menu'
 import { CodeItem } from './components/codeItem'
 
 export function App() {
+	const [ isOpen, setOpen ] = useState(false)
+
 	let location = useLocation()
 	const pathReg = /\/frameworks(\/.*)?/
-	console.log( location )
-	console.log( pathReg.test(location.pathname) )
+
+	const toggleMenu = () => setOpen( !isOpen ) 
 
 	let skilsName = ''
 	switch(location.pathname){
@@ -35,7 +38,7 @@ export function App() {
 	}
   return (
 		<> 
-			<Menu />
+			<Menu isOpen={isOpen} setOpen={() => { toggleMenu() }} />
 			<div className="home_page">
 				<div className="home_info">
 					<CodeItem code={'<body>'} className='absolute top-16 left-32' />
