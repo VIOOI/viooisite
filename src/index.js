@@ -14,6 +14,9 @@ import { DecsriptionSkils } from './pages/skils/description'
 import { FrameworksPage } from './pages/frameworks'
 import { FrameworkDescription } from './pages/frameworks/frameworkPage'
 
+import { Blog } from './pages/blog'
+import { PostPage } from './pages/blog/post'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<BrowserRouter >
@@ -32,7 +35,13 @@ root.render(
 					<Route path=':name' element={ <FrameworkDescription /> } />
 				</Route>
 
+
 			</Route>
+
+			<Route path='blog' element={ <Blog /> } >
+				<Route path=':number' element={ <PostPage /> } />
+			</Route>
+
 		</Routes>
 	 </BrowserRouter>
 );

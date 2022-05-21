@@ -33,7 +33,7 @@ export const FrameworksPage = () => {
 					<MFramework custom={2} variants={skilsAnimation} name={'React-router'} discription={''} link='react-router' />
 					<MFramework custom={3} variants={skilsAnimation} name={'Framer-motion'} discription={''} link='framer-motion' />
 				</ul>
-					<Link to='/skils' className='text-2xl font-code absolute bottom-5 right-5'>{`<— Назад`}</Link>
+					<Link to='/' className='text-2xl font-code absolute bottom-5 right-5'>{`<— Назад`}</Link>
 			</motion.div>
 		</div>
 	</>

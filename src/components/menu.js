@@ -34,7 +34,7 @@ export function Menu({ isOpen, setOpen }) {
 				<menu className='flex flex-col justify-center gap-y-5'>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Главная</span></Link>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Мои работы</span></Link>
-					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Блог</span></Link>
+					<Link to='/blog' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Блог</span></Link>
 					<div className='flex w-full justify-between'>
 						<img src={githubIcon} alt="" className='w-10'/>
 						<img src={vkIcon} alt="" className='w-10'/>
