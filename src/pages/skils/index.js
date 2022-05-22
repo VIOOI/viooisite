@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
@@ -38,7 +38,7 @@ export const SkilsPage = () => {
 			<div className="skils_info pl-14 p-5">
 				<Outlet />
 			</div>
-			<motion.div className="skils_list"
+			<div className="skils_list"
 					initial='hidden'
 					whileInView='visible'
 					viewport={{ amount: 0.2, once: true }}
@@ -58,12 +58,12 @@ export const SkilsPage = () => {
 						})
 						}
 					<li className="my-10"> 
-						<NavLink to='/frameworks'>
+						<Link to='/frameworks'>
 							<h1 className='text-2xl font-code font-medium text-site-300'>{`Фраймворки -->`}</h1>
-						</NavLink>
+						</Link>
 					</li>
 				</ul>
-			</motion.div>
+			</div>
 		</div>
 	</>
 	)
