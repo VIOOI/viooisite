@@ -39,13 +39,13 @@ export function Menu({ isOpen, setOpen }) {
 							}>
 				<menu className='flex flex-col justify-center gap-y-5'>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Главная</span></Link>
-					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Мои работы</span></Link>
+					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold text-site-200'>Мои работы</span></Link>
 					<Link to='/blog' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Блог</span></Link>
 					<div className='flex w-full justify-between'>
-						<img src={githubIcon} alt="" className='w-10'/>
-						<img src={vkIcon} alt="" className='w-10'/>
-						<img src={telegramIcon} alt="" className='w-10'/>
-						<img src={linkedInIcon} alt="" className='w-10'/>
+						<a href='https://github.com/VIOOI' onClick={() => { toggleMenu() }}> <img src={githubIcon} alt="" className='w-10'/> </a>
+						<a href='https://vk.com/wladimil_b' onClick={() => { toggleMenu() }}> <img src={vkIcon} alt="" className='w-10'/> </a>
+						<a href='https://t.me/Vl00l' onClick={() => { toggleMenu() }}> <img src={telegramIcon} alt="" className='w-10'/> </a>
+						<a href='https://www.linkedin.com/in/vladimir-belov-083111206/' onClick={() => { toggleMenu() }}> <img src={linkedInIcon} alt="" className='w-10'/> </a>
 					</div>
 				</menu>
 			</motion.div>
