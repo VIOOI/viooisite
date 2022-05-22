@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = 'https://bzsfgrkfcjubbiabbpqi.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6c2ZncmtmY2p1YmJpYWJicHFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTI5NzI4NTIsImV4cCI6MTk2ODU0ODg1Mn0.4mlbynWTUZM7i5ZK680TNFGai5ZIdCZvUdyx4whEdRk'
-const supabase = createClient(supabaseUrl, supabaseKey)
+import { supabase } from '../openDatabase'
 
 export const Post = ({ isOpenPost = false, id, tags, title, description, date }) => {
 	const [ tag, setTag ] = useState([])
@@ -43,10 +39,11 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 	}, [])
 
 	return (
-			<div className={"min-h-[40px] w-full p-5 rounded-lg" + 
+			<Link to={`${id}`}>
+			<div className={"min-h-[40px] w-full p-5 rounded-lg hover:bg-site-200 transition duration-300" + 
 				( isOpenPost ? ' bg-site-200' : '' )
 			}>
-				<Link to={`${id}`}><h2 className="text-3xl font-extrabold">{ title }</h2></Link>
+				<h2 className="text-3xl font-extrabold">{ title }</h2>
 				<p className="text-sm text-site-300 leading-4">{ description }</p>
 
 			<div className="flex justify-start items-center gap-x-2 mt-3">
@@ -65,5 +62,6 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 			}
 			</div>
 			</div>
+		</Link>
 	)
 }
