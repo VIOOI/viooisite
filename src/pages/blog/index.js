@@ -3,12 +3,14 @@ import { Outlet } from 'react-router-dom'
 
 import { Menu } from '../../components/menu'
 import { Post } from '../../components/post'
+import { Search } from '../../components/serch'
 
 import { supabase } from '../../openDatabase'
 
 export const Blog = () => {
 	const [ isOpen, setOpen ] = useState(false)
 	const [ posts, setPost ] = useState([])
+	const [ namePost, setNamePost ] = useState([])
 
 	const toggleMenu = () => setOpen( !isOpen ) 
 
@@ -26,11 +28,11 @@ export const Blog = () => {
 	return (
 		<> 
 			<Menu isOpen={isOpen} setOpen={() => { toggleMenu() }} />
-
 			
 
 			<div className='blog_wrapper'>
-				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-24'>
+				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
+				<Search />
 					{
 					posts.map( post => {
 						// let data = new Date(post.created_at)

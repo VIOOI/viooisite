@@ -14,13 +14,13 @@ export function App() {
 
 	let skilsName = ''
 	switch(location.pathname){
-		case '/skils/react':
+		case '/skils/reactjs':
 			skilsName = 'ReactJS...'
 			break;
-		case '/skils/next':
+		case '/skils/nextjs':
 			skilsName = 'NextJS...'
 			break;
-		case '/skils/tailwind':
+		case '/skils/tailwindcss':
 			skilsName = 'TailwindCSS...'
 			break;
 		default: 
