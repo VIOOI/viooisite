@@ -43,10 +43,11 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 	}, [])
 
 	return (
-			<div className={"min-h-[40px] w-full p-5 rounded-lg" + 
+			<Link to={`${id}`}>
+			<div className={"min-h-[40px] w-full p-5 rounded-lg hover:bg-site-200 transition duration-300" + 
 				( isOpenPost ? ' bg-site-200' : '' )
 			}>
-				<Link to={`${id}`}><h2 className="text-3xl font-extrabold">{ title }</h2></Link>
+				<h2 className="text-3xl font-extrabold">{ title }</h2>
 				<p className="text-sm text-site-300 leading-4">{ description }</p>
 
 			<div className="flex justify-start items-center gap-x-2 mt-3">
@@ -65,5 +66,6 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 			}
 			</div>
 			</div>
+		</Link>
 	)
 }
