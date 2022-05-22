@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 import githubIcon from '../icon_sox/github.png'
 import vkIcon from '../icon_sox/vk-logo.png'
@@ -9,6 +10,9 @@ import menu_open from '../icon_sox/menu_open.svg'
 import menu_close from '../icon_sox/menu_close.svg'
 
 export function Menu({ isOpen, setOpen }) {
+	let location = useLocation()
+
+	const regPath = /\/blog\/.*/
 	const toggleMenu = () => {
 		setOpen();
 		document.body.style.overflow = isOpen ? 'auto' : 'hidden'
@@ -26,11 +30,13 @@ export function Menu({ isOpen, setOpen }) {
 						isOpen && (
 			<motion.div
 							initial={{ width: 0, opacity:0 }}
-							animate={{ width: '50vw', opacity:1 }}
+							animate={{ width: (regPath.test(location.pathname) ? '35vw' : '50vw'), opacity:1 }}
 							exit={{ width: 0, opacity: 0 }}
 							transition={{ duration: 0.3 }}
 
-							class="w-6/12 h-screen bg-site-100 flex flex-col justify-center items-center">
+							class={"h-screen bg-site-100 flex flex-col justify-center items-center" + 
+												(regPath.test(location.pathname) ? ' w-4/12' : ' w-6/12')
+							}>
 				<menu className='flex flex-col justify-center gap-y-5'>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Главная</span></Link>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Мои работы</span></Link>

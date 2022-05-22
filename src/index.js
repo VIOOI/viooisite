@@ -6,10 +6,8 @@ import './index.sass';
 import { App } from './App';
 
 import { SkilsPage } from './pages/skils'
-import { ReactPage } from './pages/skils/react'
-import { NextPage } from './pages/skils/next'
-import { TailwindPage } from './pages/skils/tailwind'
 import { DecsriptionSkils } from './pages/skils/description'
+import { Skils } from './pages/skils/skils'
 
 import { FrameworksPage } from './pages/frameworks'
 import { FrameworkDescription } from './pages/frameworks/frameworkPage'
@@ -26,9 +24,7 @@ root.render(
 				<Route path='/' element={ <Navigate to={'/skils'} replace /> } />
 				<Route path='skils' element={ <SkilsPage /> } >
 					<Route path='' element={ <DecsriptionSkils /> } />
-					<Route path='react' element={ <ReactPage /> } />
-					<Route path='next' element={ <NextPage /> } />
-					<Route path='tailwind' element={ <TailwindPage /> } />
+					<Route path=':skil' element={ <Skils /> } />
 				</Route>
 
 				<Route path='frameworks' element={ <FrameworksPage /> } >

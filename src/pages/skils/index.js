@@ -1,8 +1,14 @@
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 import { MSkils } from '../../components/skils'
 import { Outlet } from 'react-router-dom'
+
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = 'https://bzsfgrkfcjubbiabbpqi.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6c2ZncmtmY2p1YmJpYWJicHFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTI5NzI4NTIsImV4cCI6MTk2ODU0ODg1Mn0.4mlbynWTUZM7i5ZK680TNFGai5ZIdCZvUdyx4whEdRk'
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const skilsAnimation = {
 	hidden: {
@@ -17,10 +23,19 @@ const skilsAnimation = {
 }
 
 export const SkilsPage = () => {
+	const [ skils, setSkil ] = useState([])
+	useEffect(() => {
+		( async function fethPost () {
+			let { data: skilBD, error } = await supabase
+				.from('skils')
+				.select('name')
+			setSkil(skilBD)
+		})();
+	}, [])
 	return (
 	<>
 		<div className="skils_page">
-			<div className="skils_info">
+			<div className="skils_info pl-14 p-5">
 				<Outlet />
 			</div>
 			<motion.div className="skils_list"
@@ -29,9 +44,19 @@ export const SkilsPage = () => {
 					viewport={{ amount: 0.2, once: true }}
 					>
 				<ul>
-					<MSkils custom={1} variants={skilsAnimation} name={'ReactJS'} discription={'Javascript'} link='/skils/react' />
-					<MSkils custom={2} variants={skilsAnimation} name={'NextJS'} discription={''} link='/skils/next' />
-					<MSkils custom={3} variants={skilsAnimation} name={'TailwindCSS'} discription={'HTML / CSS'} link='/skils/tailwind' />
+						{
+						skils.map(( skil, index ) => {
+							return(
+								<MSkils 
+									key={index}
+									custom={index} 
+									variants={skilsAnimation} 
+									name={skil.name.charAt(0).toUpperCase() + skil.name.slice(1)}
+									link={skil.name} 
+								/>
+							)
+						})
+						}
 					<li className="my-10"> 
 						<NavLink to='/frameworks'>
 							<h1 className='text-2xl font-code font-medium text-site-300'>{`Фраймворки -->`}</h1>

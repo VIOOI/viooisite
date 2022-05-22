@@ -6,7 +6,7 @@ export const Skils = forwardRef( ({ name, discription, link }, ref) => {
 	let location = useLocation()
 	return(
 		<li className="my-10" ref={ref} > 
-			<NavLink to={location.pathname === link ? '/skils' : link}>
+			<NavLink to={location.pathname == `/skils/${link}` ? '/skils' : link}>
 				<h1 className={'text-5xl font-code font-medium' + 
 					( location.pathname === '/skils' ? ' text-white' : '' )
 					}>{name}</h1>
