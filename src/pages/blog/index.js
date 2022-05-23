@@ -17,7 +17,6 @@ export const Blog = () => {
 			let { data: blog } = await supabase
 				.from('blog')
 				.select('id,title,description,created_at')
-			// console.log( blog )
 			setPost(blog)
 		})();
 
@@ -29,7 +28,7 @@ export const Blog = () => {
 
 			
 
-			<div className='blog_wrapper'>
+			<div className='flex'>
 				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-24'>
 					{
 					posts.map( post => {

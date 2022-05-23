@@ -8,7 +8,7 @@ export const Framework = forwardRef( ({ name, discription, link }, ref) => {
 		<li className="my-10" ref={ref}> 
 			<NavLink to={location.pathname === link ? '/skils' : link}>
 				<h1 className={'text-3xl font-code font-medium' + 
-					( location.pathname === '/skils' ? ' text-white' : '' )
+					( location.pathname === `/frameworks/${name.toLowerCase()}` ? ' text-white' : '' )
 					}>{name}</h1>
 			</NavLink>
 				<h2 className='font-code text-sm text-site-300'>{discription ?? null}</h2>

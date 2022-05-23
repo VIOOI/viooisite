@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
-// import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { MFramework } from '../../components/framewor'
 import { Outlet } from 'react-router-dom'
@@ -27,17 +27,18 @@ export const FrameworksPage = () => {
 				.from('frameworks')
 				.select('name')
 			setFrameworks(frameworksBD)
-			console.log( frameworksBD )
 		})();
 	}, [])
 	return (
 	<>
-		<div className="frameworks_page">
-			<div className="frameworks_info pl-14 p-5">
+		<div className="flex">
+			<div className="w-6/12 h-screen overflow-y-scroll pl-14 p-5">
 				<Outlet />
 			</div>
-			<div className="frameworks_list relative"
+					<AnimatePresence >
+			<motion.div className="w-6/12 h-screen bg-image-frameworks text-site-300 flex justify-center items-center text-site-100 relative"
 					initial='hidden'
+					animate='visible'
 					whileInView='visible'
 					viewport={{ amount: 0.2, once: true }}
 					>
@@ -55,8 +56,9 @@ export const FrameworksPage = () => {
 						})
 						}
 				</ul>
-					<Link to='/' className='text-2xl font-code absolute bottom-5 right-5'>{`<— Назад`}</Link>
-			</div>
+					<Link to='/skils' className='text-2xl font-code absolute bottom-10 right-10 text-site-100'>{`<— Назад`}</Link>
+			</motion.div>
+					</AnimatePresence >
 		</div>
 	</>
 	)

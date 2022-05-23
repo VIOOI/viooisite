@@ -30,7 +30,6 @@ export function App() {
 	
 	const scrollToBottom = () => {
 		const pageHiedth = document.documentElement.scrollHeight 
-		console.log( pageHiedth )
 		window.scrollTo({
 			top: parseInt(pageHiedth),
 			behavior: "smooth"
@@ -39,10 +38,10 @@ export function App() {
   return (
 		<> 
 			<Menu isOpen={isOpen} setOpen={() => { toggleMenu() }} />
-			<div className="home_page">
-				<div className="home_info">
+			<div className="flex min-h-[700px]">
+				<div className="w-6/12 h-screen relative flex flex-col justify-center items-center min-h-[700px]">
 					<CodeItem code={'<body>'} className='absolute top-16 left-32' />
-					<div className="info_content">
+					<div className="flex flex-col gap-y-5">
 						<div>
 							<CodeItem code={'<h1>'} />
 							<h1 className="text-7xl font-code font-extrabold ml-8 my-5">Белов <br /> Владимир</h1>
@@ -64,7 +63,7 @@ export function App() {
 					</div>
 					<CodeItem code={'</body>'} className='absolute bottom-16 left-32' />
 				</div>
-				<div className={"home_bcg" +
+				<div className={"w-6/12 h-screen bg-cover min-h-[700px]" +
 					(pathReg.test(location.pathname) ? ' bg-site-400' : ' bg-image-home')
 				}></div>
 			</div>
