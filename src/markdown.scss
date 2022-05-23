@@ -6,45 +6,44 @@
 @layer components {
 	.markdown{
 		@apply p-10 w-full h-screen overflow-scroll;
-		h1 {
-			@apply text-2xl font-extrabold text-stone-800;
-		}
-		h2 {
-			@apply text-lg font-bold text-stone-700;
-		}
-		h3 {
-			@apply font-bold text-stone-600;
-		}
-		pre {
-			@apply mt-2 text-xs;
-		}
-		p {
-			@apply text-[0.9rem] pb-2 indent-4;
-		}
-		img {
-			@apply rounded-md shadow-lg w-10/12 mx-auto my-2;
-		}
+// Базовые стили
+		h1 { @apply text-5xl font-extrabold text-stone-800; }
+		h2 { @apply text-3xl font-bold text-stone-700; }
+		h3 { @apply font-bold text-stone-600; }
+		pre { @apply mt-2 text-xs font-code; }
+		p { @apply text-[1rem] pb-2 indent-4; }
+		img { @apply rounded-md shadow-lg w-10/12 mx-auto my-2; }
+
+// Колонки
 		.cols-2 {
 			@apply columns-2 my-2 gap-2 justify-center;
+			p { @apply text-[0.9rem] pb-2 indent-4; }
+			h1 { @apply text-xl font-extrabold text-stone-800; }
+			h2 { @apply text-lg font-extrabold text-stone-800; }
+			img { @apply rounded-md w-10/12 mx-auto my-2; }
 		}
 		.cols-3 {
-			@apply flex my-2 gap-2;
+			@apply flex my-2;
+			p { @apply text-[0.8rem] pb-2 indent-4; }
+			h1 { @apply text-xl font-extrabold text-stone-800; }
+			h2 { @apply text-lg font-extrabold text-stone-800; }
+			img { @apply rounded-md w-10/12 mx-auto my-2; }
 		}
 		.cols-4 {
 			@apply columns-4 my-2;
+			p { @apply text-[0.9rem] pb-2 indent-4; }
+			h1 { @apply text-xl font-extrabold text-stone-800; }
+			h2 { @apply text-lg font-extrabold text-stone-800; }
+			img { @apply rounded-md w-10/12 mx-auto my-2; }
 		}
 		.col{
-			@apply w-full bg-slate-50 p-3 rounded-md;
+			@apply w-full p-3;
 		}
-		.img-sm img {
-			@apply w-3/12;
-		}
-		.img-md img {
-			@apply w-6/12;
-		}
-		.img-full img {
-			@apply w-full;
-		}
+
+// Изображения
+		.img-sm img { @apply w-3/12; }
+		.img-md img { @apply w-6/12; }
+		.img-full img { @apply w-full; }
 	}
 }
 
