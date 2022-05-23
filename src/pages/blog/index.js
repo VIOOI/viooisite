@@ -30,7 +30,7 @@ export const Blog = () => {
 			
 
 			<div className='flex'>
-				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-24'>
+				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
 				<Search />
 					{
 					posts.map( post => {
