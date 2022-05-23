@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import { BiSearch } from 'react-icons/bi'
 
 import { Menu } from '../../components/menu'
 import { Post } from '../../components/post'
@@ -10,9 +11,16 @@ import { supabase } from '../../openDatabase'
 export const Blog = () => {
 	const [ isOpen, setOpen ] = useState(false)
 	const [ posts, setPost ] = useState([])
-	const [ namePost, setNamePost ] = useState([])
+	const [ value, setValue ] = useState('')
 
 	const toggleMenu = () => setOpen( !isOpen ) 
+
+		const filterPosts =	posts.filter( post => {
+			return post.title.toLowerCase().includes( value.toLowerCase() )
+		} )
+
+	useEffect( () => {
+	}, [posts] )
 
 	useEffect(() => {
 		( async function fethPost () {
@@ -20,6 +28,7 @@ export const Blog = () => {
 				.from('blog')
 				.select('id,title,description,created_at')
 			setPost(blog)
+
 		})();
 
 	}, [])
@@ -31,9 +40,10 @@ export const Blog = () => {
 
 			<div className='flex'>
 				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
-				<Search />
+					<Search value={value} setValue={setValue} filterPosts={filterPosts} />
+
 					{
-					posts.map( post => {
+					filterPosts.map( post => {
 						// let data = new Date(post.created_at)
 						async function fethTags ( id ) {
 							let { data: tags_blogs } = await supabase
@@ -48,6 +58,7 @@ export const Blog = () => {
 						)
 					} )
 					}
+
 				</div>
 				<div className='w-8/12 min-h-screen bg-site-100'>
 					<Outlet />
