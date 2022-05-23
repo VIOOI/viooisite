@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import { MSkils } from '../../components/skils'
@@ -23,7 +23,7 @@ export const SkilsPage = () => {
 	const [ skils, setSkil ] = useState([])
 	useEffect(() => {
 		( async function fethPost () {
-			let { data: skilBD, error } = await supabase
+			let { data: skilBD } = await supabase
 				.from('skils')
 				.select('name')
 			setSkil(skilBD)
@@ -31,12 +31,14 @@ export const SkilsPage = () => {
 	}, [])
 	return (
 	<>
-		<div className="skils_page">
-			<div className="skils_info pl-14 p-5">
+		<div className="flex">
+			<div className="w-6/12 h-screen overflow-y-scroll pl-14 p-5">
 				<Outlet />
 			</div>
-			<div className="skils_list"
+					<AnimatePresence >
+			<motion.div className="w-6/12 h-screen bg-site-400 text-site-300 flex justify-center items-center relative"
 					initial='hidden'
+					animate='visible'
 					whileInView='visible'
 					viewport={{ amount: 0.2, once: true }}
 					>
@@ -56,11 +58,12 @@ export const SkilsPage = () => {
 						}
 					<li className="my-10"> 
 						<Link to='/frameworks'>
-							<h1 className='text-2xl font-code font-medium text-site-300'>{`Фраймворки -->`}</h1>
+							<h1 className='text-2xl font-code font-medium text-site-100 absolute bottom-10 right-10'>{`Фраймворки -->`}</h1>
 						</Link>
 					</li>
 				</ul>
-			</div>
+			</motion.div>
+					</AnimatePresence >
 		</div>
 	</>
 	)

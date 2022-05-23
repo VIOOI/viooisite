@@ -22,7 +22,7 @@ export function Menu({ isOpen, setOpen }) {
 		<div className={ "fixed top-0 left-0 z-10 flex" + 
 				( isOpen ? ' w-screen h-screen' : '' )
 				}>
-			<div className="menu" onClick={() => { toggleMenu() }}>
+			<div className="flex flex-col gap-y-2 fixed top-10 left-10 z-10 cursor-pointer" onClick={() => { toggleMenu() }}>
 				<img src={( isOpen ? menu_close : menu_open )} alt="" className='w-10'/>
 			</div>
 				<AnimatePresence>

@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import './index.sass';
-import './markdown.sass'
+import './markdown.scss';
 
 import { App } from './App';
 

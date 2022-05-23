@@ -19,7 +19,6 @@ export const Blog = () => {
 			let { data: blog } = await supabase
 				.from('blog')
 				.select('id,title,description,created_at')
-			// console.log( blog )
 			setPost(blog)
 		})();
 
@@ -30,8 +29,8 @@ export const Blog = () => {
 			<Menu isOpen={isOpen} setOpen={() => { toggleMenu() }} />
 			
 
-			<div className='blog_wrapper'>
-				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
+			<div className='flex'>
+				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-24'>
 				<Search />
 					{
 					posts.map( post => {
