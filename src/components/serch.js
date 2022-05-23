@@ -1,5 +1,18 @@
 import { useState } from 'react'
 import { BiSearch } from 'react-icons/bi'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const skilsAnimation = {
+	hidden: {
+		y: -10,
+		opacity: 0,
+	},
+	visible: custom => ( {
+		y: 0,
+		opacity: 1,
+		transition: { delay: custom * 0.1 },
+	} )
+}
 
 export const Search = ({ value, setValue, filterPosts }) => {
 	const [ isOpen, setIsOpen ] = useState(true)
@@ -16,12 +29,18 @@ export const Search = ({ value, setValue, filterPosts }) => {
 				}}
 				value={value}
 			/>
+				<AnimatePresence>
 			<ul className='absolute left-0 top-12 bg-site-200 shadow-md w-full rounded-md max-h-[200px] overflow-auto'>
 					{
 						value && isOpen
-						? filterPosts.map( post => {
+						? filterPosts.map( ( post, index ) => {
 						return(
-							<li 
+							<motion.li 
+								initial='hidden'
+								animate='visible'
+								exit='hidden'
+								variants={skilsAnimation}
+								custom={index}
 								key={post.id}
 								className='font-code py-2 px-4 hover:bg-[#E5E5E5] cursor-pointer transition-colors duration-100'
 								onClick={ event => {
@@ -30,12 +49,13 @@ export const Search = ({ value, setValue, filterPosts }) => {
 								} }
 							>
 								{ post.title }
-							</li>
+							</motion.li>
 						)
 					} )
 					: null
 					}
 			</ul>
+			</AnimatePresence>
 	</div>
 	)
 }
