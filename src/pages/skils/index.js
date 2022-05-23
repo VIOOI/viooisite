@@ -36,7 +36,7 @@ export const SkilsPage = () => {
 				<Outlet />
 			</div>
 					<AnimatePresence >
-			<motion.div className="w-6/12 h-screen bg-image-frameworks text-site-300 flex justify-center items-center relative"
+			<motion.div className="w-6/12 h-screen bg-site-400 text-site-300 flex justify-center items-center relative"
 					initial='hidden'
 					animate='visible'
 					whileInView='visible'
