@@ -27,6 +27,7 @@ export const SkilsPage = () => {
 				.from('skils')
 				.select('name')
 			setSkil(skilBD)
+				document.title = 'Навыки';
 		})();
 	}, [])
 	return (

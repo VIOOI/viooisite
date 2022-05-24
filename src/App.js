@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 
 import { Menu } from './components/menu'
@@ -35,6 +35,10 @@ export function App() {
 			behavior: "smooth"
 			})
 	}
+
+	useEffect( () => {
+		document.title = "Главная";
+		}, [] )
   return (
 		<> 
 			<Menu isOpen={isOpen} setOpen={() => { toggleMenu() }} />

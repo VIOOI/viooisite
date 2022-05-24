@@ -26,7 +26,8 @@ export const FrameworksPage = () => {
 			let { data: frameworksBD, error } = await supabase
 				.from('frameworks')
 				.select('name')
-			setFrameworks(frameworksBD)
+				setFrameworks(frameworksBD)
+				document.title = 'Фреймворки';
 		})();
 	}, [])
 	return (

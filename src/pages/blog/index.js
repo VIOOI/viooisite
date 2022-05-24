@@ -31,6 +31,8 @@ export const Blog = () => {
 
 		})();
 
+		document.title = "Блог";
+
 	}, [])
 
 	return (

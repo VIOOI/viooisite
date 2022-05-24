@@ -14,9 +14,10 @@ export const PostPage = () => {
 		( async function fethPost () {
 			let { data: blog } = await supabase
 				.from('blog')
-				.select('post')
+				.select('post,title')
 				.eq('id', `${number}`)
 				setPost(blog)
+				document.title = `${blog[0].title}`;
 		})();
 	}, [number])
 

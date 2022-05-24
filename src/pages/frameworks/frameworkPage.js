@@ -16,9 +16,10 @@ export const FrameworkDescription = () => {
 		( async function fethPost () {
 			let { data: framework, error } = await supabase
 				.from('frameworks')
-				.select('description')
+				.select('description,name')
 				.eq('name', `${name}`)
 			setDesc(framework[0].description)
+				document.title = `${framework[0].name}`;
 		})();
 	}, [name])
 

@@ -16,9 +16,10 @@ export const Skils = () => {
 		( async function fethPost () {
 			let { data: skils, error } = await supabase
 				.from('skils')
-				.select('description')
+				.select('description,name')
 				.eq('name', `${skil}`)
 			setDesc(skils[0].description)
+				document.title = `${skils[0].name}`;
 		})();
 	}, [skil])
 
