@@ -32,7 +32,7 @@ export const SkilsPage = () => {
 	return (
 	<>
 		<div className="flex">
-			<div className="w-6/12 h-screen overflow-y-scroll pl-14 p-5">
+			<div className="w-6/12 h-screen overflow-y-hidden pl-14 p-5">
 				<Outlet />
 			</div>
 					<AnimatePresence >
