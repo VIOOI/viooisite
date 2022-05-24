@@ -4,6 +4,9 @@
 @tailwind components;
 
 @layer components {
+	.mr-center .markdown {
+		@apply p-10 w-full max-h-screen overflow-auto flex flex-col justify-center;
+	}
 	.markdown{
 		@apply p-10 w-full h-screen overflow-scroll;
 // Базовые стили
