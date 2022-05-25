@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { MFramework } from '../../components/framewor'
@@ -21,9 +21,22 @@ const frameworkAnimation = {
 
 export const FrameworksPage = () => {
 	const [ frameworks, setFrameworks ] = useState([])
+
+	const scrollToBottom = () => {
+		let mql = window.matchMedia('(max-width: 1024px)');
+		console.log( mql )
+		if ( mql.matches ) {
+			const pageHiedth = document.documentElement.scrollHeight 
+			window.scrollTo({
+				top: parseInt(pageHiedth),
+				behavior: "smooth"
+				})
+		}
+	}
+
 	useEffect(() => {
 		( async function fethPost () {
-			let { data: frameworksBD, error } = await supabase
+			let { data: frameworksBD } = await supabase
 				.from('frameworks')
 				.select('name')
 				setFrameworks(frameworksBD)
@@ -32,12 +45,12 @@ export const FrameworksPage = () => {
 	}, [])
 	return (
 	<>
-		<div className="flex">
-			<div className="mr-center w-6/12 h-screen overflow-y-scroll pl-14 p-5">
+		<div className="flex flex-col-reverse lg:flex-row">
+			<div className="mr-center w-full lg:w-6/12 h-screen overflow-y-scroll pl-14 p-5">
 				<Outlet />
 			</div>
 					<AnimatePresence >
-			<motion.div className="w-6/12 h-screen bg-image-frameworks text-site-300 flex justify-center items-center text-site-100 relative"
+			<motion.div className="w-full lg:w-6/12 h-[50vh] lg:h-screen bg-center lg:bg-top bg-image-frameworks text-site-300 flex justify-center items-center relative"
 					initial='hidden'
 					animate='visible'
 					whileInView='visible'
@@ -52,7 +65,9 @@ export const FrameworksPage = () => {
 									variants={frameworkAnimation} 
 									name={fram.name.charAt(0).toUpperCase() + fram.name.slice(1)}
 									discription={''} 
-									link={fram.name}/>
+									onClick={ scrollToBottom }
+									link={fram.name}
+									/>
 							)
 						})
 						}

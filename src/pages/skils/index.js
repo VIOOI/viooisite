@@ -21,7 +21,21 @@ const skilsAnimation = {
 
 export const SkilsPage = () => {
 	const [ skils, setSkil ] = useState([])
+
+	const scrollToBottom = () => {
+		let mql = window.matchMedia('(max-width: 1024px)');
+		console.log( mql )
+		if ( mql.matches ) {
+			const pageHiedth = document.documentElement.scrollHeight 
+			window.scrollTo({
+				top: parseInt(pageHiedth),
+				behavior: "smooth"
+				})
+		}
+	}
+
 	useEffect(() => {
+
 		( async function fethPost () {
 			let { data: skilBD } = await supabase
 				.from('skils')
@@ -32,12 +46,12 @@ export const SkilsPage = () => {
 	}, [])
 	return (
 	<>
-		<div className="flex">
-			<div className="mr-center w-6/12 h-screen overflow-y-scroll pl-14 p-5">
+		<div className="flex flex-col-reverse lg:flex-row">
+			<div className="mr-center w-full lg:w-6/12 h-screen overflow-y-scroll pl-14 p-5">
 				<Outlet />
 			</div>
 					<AnimatePresence >
-			<motion.div className="w-6/12 h-screen bg-site-400 text-site-300 flex justify-center items-center relative"
+			<motion.div className="w-full lg:w-6/12 h-[50vh] lg:h-screen bg-site-400 text-site-300 flex justify-center items-center relative"
 					initial='hidden'
 					animate='visible'
 					whileInView='visible'
@@ -53,6 +67,7 @@ export const SkilsPage = () => {
 									variants={skilsAnimation} 
 									name={skil.name.charAt(0).toUpperCase() + skil.name.slice(1)}
 									link={skil.name} 
+									onClick={ scrollToBottom }
 								/>
 							)
 						})

@@ -11,11 +11,21 @@ import menu_close from '../icon_sox/menu_close.svg'
 
 export function Menu({ isOpen, setOpen }) {
 	let location = useLocation()
+	let widthMenu = '';
 
 	const regPath = /\/blog\/.*/
 	const toggleMenu = () => {
 		setOpen();
 		document.body.style.overflow = isOpen ? 'auto' : 'hidden'
+	}
+	if (	window.matchMedia('(max-width: 1024px)').matches ){
+		widthMenu = '100vw'
+	} else {
+		if ( regPath.test(location.pathname) ) {
+			widthMenu = '35vw'
+		} else {
+			widthMenu = '50vw'
+		}
 	}
 		return(
 			<> 
@@ -30,12 +40,12 @@ export function Menu({ isOpen, setOpen }) {
 						isOpen && (
 			<motion.div
 							initial={{ width: 0, opacity:0 }}
-							animate={{ width: (regPath.test(location.pathname) ? '35vw' : '50vw'), opacity:1 }}
+							animate={{ width: widthMenu, opacity:1 }}
 							exit={{ width: 0, opacity: 0 }}
 							transition={{ duration: 0.3 }}
 
 							class={"h-screen bg-site-100 flex flex-col justify-center items-center" + 
-												(regPath.test(location.pathname) ? ' w-4/12' : ' w-6/12')
+												(regPath.test(location.pathname) ? ' w-full lg:w-4/12' : ' w-full lg:w-6/12')
 							}>
 				<menu className='flex flex-col justify-center gap-y-5'>
 					<Link to='/' onClick={() => { toggleMenu() }}><span className='font-code text-6xl font-bold'>Главная</span></Link>
