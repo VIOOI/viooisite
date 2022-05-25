@@ -14,6 +14,7 @@ import { FrameworkDescription } from './pages/frameworks/frameworkPage'
 
 import { Blog } from './pages/blog'
 import { PostPage } from './pages/blog/post'
+import { MobileBlog } from './pages/blog/mobileBlog'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -37,6 +38,8 @@ root.render(
 			<Route path='blog' element={ <Blog /> } >
 				<Route path=':number' element={ <PostPage /> } />
 			</Route>
+			<Route path='/m/blog' element={ <MobileBlog /> } />
+			<Route path='/m/blog/:number' element={ <PostPage /> } />
 
 		</Routes>
 	 </BrowserRouter>

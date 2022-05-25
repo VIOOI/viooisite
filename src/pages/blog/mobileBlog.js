@@ -8,7 +8,7 @@ import { Search } from '../../components/serch'
 
 import { supabase } from '../../openDatabase'
 
-export const Blog = () => {
+export const MobileBlog = () => {
 	const [ isOpen, setOpen ] = useState(false)
 	const [ posts, setPost ] = useState([])
 	const [ value, setValue ] = useState('')
@@ -24,22 +24,14 @@ export const Blog = () => {
 	}, [posts] )
 
 	useEffect(() => {
+		( async function fethPost () {
+			let { data: blog } = await supabase
+				.from('blog')
+				.select('id,title,description,created_at')
+			setPost(blog)
 
-		let mql = window.matchMedia('(max-width: 1024px)');
-		if ( window.matchMedia('(max-width: 1024px)').matches ){
-			navigate('/m/blog/')
-		} else {
-			( async function fethPost () {
-				let { data: blog } = await supabase
-					.from('blog')
-					.select('id,title,description,created_at')
-				setPost(blog)
-
-			})();
-		}
-
+		})();
 		document.title = "Блог";
-
 	}, [])
 
 	return (
@@ -48,7 +40,7 @@ export const Blog = () => {
 			
 
 			<div className='flex'>
-				<div className='w-4/12 min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
+				<div className='w-full min-h-screen overflow-y-scroll flex flex-col gap-5 px-5 pl-24 pt-10'>
 					<Search value={value} setValue={setValue} filterPosts={filterPosts} />
 
 					{
@@ -68,9 +60,6 @@ export const Blog = () => {
 					} )
 					}
 
-				</div>
-				<div className='w-8/12 min-h-screen bg-site-100'>
-					<Outlet />
 				</div>
 			</div>
 

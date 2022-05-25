@@ -7,6 +7,7 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 	const [ tag, setTag ] = useState([])
 	const [ fullTags, setTags ] = useState([])
 	const [ postTags, setPostTags ] = useState([])
+	const [ link, setLink ] = useState('')
 
 	let datePost = new Date(date)
 
@@ -29,6 +30,11 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 
 	useEffect(() => {
 
+		if ( window.matchMedia('(max-width: 1024px)').matches ){
+			setLink(`/m/blog/${id}`)
+		} else {
+			setLink(`${id}`)
+		}
 		( async function fethTags () {
 			let { data: tags } = await supabase
 				.from('tags')
@@ -39,7 +45,7 @@ export const Post = ({ isOpenPost = false, id, tags, title, description, date })
 	}, [])
 
 	return (
-			<Link to={`${id}`}>
+			<Link to={`${link}`}>
 			<div className={"min-h-[40px] w-full p-5 rounded-lg hover:bg-site-200 transition duration-300" + 
 				( isOpenPost ? ' bg-site-200' : '' )
 			}>
