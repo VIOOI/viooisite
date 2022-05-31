@@ -5,10 +5,10 @@
 
 @layer components {
 	.mr-center .markdown {
-		@apply p-10 w-full min-h-screen overflow-auto flex flex-col justify-center;
+		@apply p-10 w-7/12 max-h-screen overflow-auto flex flex-col justify-center;
 	}
 	.markdown{
-		@apply p-10 w-full min-h-screen overflow-hidden;
+		@apply p-10 w-7/12 max-h-screen overflow-auto;
 // Базовые стили
 		h1 { @apply text-5xl font-extrabold text-stone-800; }
 		h2 { @apply text-3xl font-bold text-stone-700; }
@@ -23,10 +23,11 @@
 				ul{ @apply pl-5 list-inside;
 				} } }
 
-		ol { @apply list-decimal indent-1;
-			li { 
-				ol{ @apply pl-5 list-inside;
-				} } }
+		ul { @apply list-none indent-0;
+			li { @apply indent-0 p-0;
+				p{ @apply p-0 m-0 indent-0; }
+			}
+		}
 
 // Вспомогательные
 		.flex-row { @apply flex; }
@@ -35,7 +36,7 @@
 // Колонки
 		.cols-2 {
 			@apply flex my-2 gap-2 justify-center;
-			p { @apply text-[0.9rem] pb-2 indent-4; }
+			p { @apply text-[0.9rem]; }
 			h1 { @apply text-xl font-extrabold text-stone-800; }
 			h2 { @apply text-lg font-extrabold text-stone-800; }
 			img { @apply rounded-md w-10/12 mx-auto my-2; }
@@ -118,6 +119,16 @@
 			@apply p-3 my-2 bg-gray-100 border-l-2  border-gray-500;
 			p { @apply p-0 }
 		}
+
+// Фона
+		.bg-gray-1 { @apply p-5 rounded-md bg-gray-100; }
+		.bg-gray-2 { @apply p-5 rounded-md bg-gray-300; }
+		.bg-gray-3 { @apply p-5 rounded-md bg-gray-500 text-white; }
+		.bg-gray-4 { @apply p-5 rounded-md bg-gray-700 text-white; }
+		.bg-blue-1 { @apply p-5 rounded-md bg-blue-100 }
+		.bg-blue-2 { @apply p-5 rounded-md bg-blue-300 }
+		.bg-blue-3 { @apply p-5 rounded-md bg-blue-500 }
+		.bg-blue-4 { @apply p-5 rounded-md bg-blue-700 }
 
 	}
 }
